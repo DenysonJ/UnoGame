@@ -1,0 +1,129 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname lab3-extraclasse-2019-1) (read-case-sensitive #t) (teachpacks ((lib "image.rkt" "teachpack" "2htdp"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "image.rkt" "teachpack" "2htdp")) #f)))
+;; NOME: 
+
+;; Exercício individual.
+;; Para cada exercício, faça pelo menos 2 testes usando check-expect.
+;; Lembre que todas as funções devem conter a documentação completa,
+;; incluindo contrato, objetivo, exemplos e testes.
+
+;; ==================================================================
+;; DEFINIÇÕES DE TIPOS DE DADOS:
+;; -----------------
+;; TIPO CARTA-NUMERO:
+;; -----------------
+(define-struct carta-numero (cor valor))
+;; Um elemento do conjunto Carta-NUMERO é
+;;   (make-carta-numero c v)     onde
+;;   c : String, é a cor da carta, que pode ser "azul", "verde", "amarelo" ou "vermelho"
+;;   v : Número, é o número da carta
+
+;; Exemplos de constantes do tipo Carta-numero:
+(define VERMELHO1 (make-carta-numero "vermelho" 1))
+(define AZUL2     (make-carta-numero "azul" 2))
+(define VERDE7    (make-carta-numero "verde"  7))
+
+;; -----------------
+;; TIPO CARTA-ESPECIAL:
+;; -----------------
+(define-struct carta-especial (cor tipo))
+;; Um elemento do conjunto Carta-especial é
+;;   (make-carta-especial c t)     onde
+;;   c : String, é a cor da carta, que pode ser "azul", "verde", "amarelo",  "vermelho" ou "qualquer"
+;;   t : String, é o tipo da carta especial, que pode ser "Compra4", "Compra2", "Inverte", "NãoJoga" e "TrocaCor"
+
+;; Exemplos de constantes do tipo Carta-especial:
+
+;; -----------
+;; TIPO CARTA:
+;; -----------
+;; Um elemento do conjunto Carta é
+;; 1. uma carta-valor;
+;; 2. uma carta-especial
+
+;; Carta é um tipo misto, cujos elementos podem ser tipo Carta-numero ou tipo Carta-especial.
+
+(define C1 (make-carta-numero "azul" 1))
+(define C2 (make-carta-numero "vermelho" 8))
+(define C3 (make-carta-especial "qualquer" "Compra4"))
+
+;; ==================================================================
+;; INCLUIR AQUI AS DEFINIÇÕES FEITAS NO EXTRACLASSE ANTERIOR QUE VOCE USAR NOS EXERCÍCIOS A SEGUIR
+
+
+;; ==================================================================
+
+;; ========================================================================
+;;                                 QUESTÃO 1
+;; Defina o tipo de dados lista de cartas de Uno e dê 4 exemplos de elementos deste tipo de dados.
+;; =========================================================================
+
+
+;; ========================================================================
+;;                                 QUESTÃO 2
+;; Construa uma função que, dada uma lista de cartas de Uno e uma cor,
+;; devolve todas as cartas desta cor na lista.
+;; ========================================================================
+
+
+;; ========================================================================
+;;                                 QUESTÃO 3
+;; Defina o tipo de dados JOGADOR, que deve conter o nome do jogador, a
+;; lista de cartas de sua mão e sua pontuação.
+;; ========================================================================
+
+
+;; ========================================================================
+;;                                 QUESTÃO 4
+;; Construa uma função que, dados um jogador e uma carta comprada, insere
+;; esta carta na lista de cartas do jogador.
+;; =========================================================================
+
+
+;; ========================================================================
+;;                                 QUESTÃO 5
+;; Construa uma função chamada vencedor que, dados 2 jogadores, define que ganhou.
+;; Para isso, é necessário somar à pontuação de cada jogador os pontos referentes
+;; às listas de cartas dos mesmos, e verificar quem tem a menor pontuação (como o
+;; objetivo é ficar com menos cartas, que tem a menor pontuação ganha). A função
+;; deve devolver apenas o nome e a pontuação do vencedor.
+
+;; Os pontos das cartas de Uno são os seguintes:
+;; * as cartas numeradas valem o seu número;
+;; * as cartas "Compra2", "Inverte" e "NãoJoga" valem 20;
+;; * as cartas "Compra4" e "TrocaCor" valem 50.
+
+;; =========================================================================
+
+;; ========================================================================
+;;                                 QUESTÃO 6
+;; Construa uma função que, dados a carta da mesa e um jogador, escolhe uma
+;; carta to jogador para ser jogada, de acordo com as regras do Uno. Se a
+;; carta escolhida for "Compra4" ou "TrocaCor", deve ser escolhida uma cor da
+;; seguinte forma: se for jogado um "TrocaCor" para trocar a cor para amarelo,
+;; a carta a ser jogada deve ser (make-carta-especial "amarelo" "TrocaCor"). 
+
+;; As regras para escolha de cartas válidas para jogar são:
+;; * Uma carta-numero pode ser escolhida se for da mesma cor ou do mesmo numero da carta da mesa;
+;; * As cartas especiais "Inverte", "Compra2" e "NãoJoga" podem ser escolhidas se forem da mesma
+;;   cor da carta da mesa ou tiverem o mesmo símbolo (mesmo tipo);
+;; * As cartas especiais "TrocaCor" e "Compra4" sempre podem ser jogadas, mas deve-se escolher a cor.
+
+;; Caso o jogador não tenha nenhuma carta que possa ser jogada, a função deve retornar
+;; a mensagem "Não tenho cartas para jogar!"
+;; =========================================================================
+
+;; ========================================================================
+;;                                 QUESTÃO 7
+;; Construa a função mostra-jogada que, dados um jogador e a carta da mesa, mostra a
+;; jogada escolhida (gera uma imagem com a jogada, incluindo o nome do jogador).
+;; =========================================================================
+
+;; ========================================================================
+;;                                 QUESTÃO 8
+;; Construa a função mostra-jogadas-possiveis que, dados um jogador e a carta da mesa,
+;; mostra a lista de cartas que poderiam ser jogadas (gera uma imagem com as cartas da mão,
+;; a carta da mesa, e as cartas possíveis de serem jogadas).
+;; =========================================================================
+
